@@ -1,0 +1,30 @@
+﻿@using I_Eat_Spargus.DB
+@using I_Eat_Spargus.Models
+@model List<User>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome</title>
+</head>
+<body>
+    <h4> Добро пожаловать в общество любителей спаржи </h4><br />
+    <form method="get" action="/Creat/Index">
+        <label>Хотите добавить запись</label>
+        <br />
+        <button>Да</button>
+    </form>
+    <form method="get" action="/Creat/Registration">
+        <label>Хотите зарегистрироваться</label>
+        <br />
+        <button>Да</button>
+    </form>
+    <label>Лента :</label>
+    @foreach(var user in Operation.AllUsers())
+    {
+        <p>@user.Date @user.FName ел спаржу уже @user.NumberamountEaten раз</p><br />
+    }
+</body>
+</html>
