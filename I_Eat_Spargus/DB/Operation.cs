@@ -21,30 +21,21 @@ namespace I_Eat_Spargus.DB
         {
             using (Context db = new Context())
             {
-                foreach (var user in db.Users)
+                if (gmail != null)
                 {
-                    if (user.Gmail == gmail)
+                    foreach (var user in db.Users)
                     {
-                        return user;
+                        if (user.Gmail == gmail)
+                        {
+                            return user;
+                        }
                     }
+
                 }
                 return null;
             }
         }
-        public static User ReadDate(DateTime date)
-        {
-            using (Context db = new Context())
-            {
-                foreach (var user in db.Users)
-                {
-                    if (user.Date == date)
-                    {
-                        return user;
-                    }
-                }
-                return null;
-            }
-        }
+
         public static void UpDate(User user)
         {
             using (Context db = new Context())
@@ -61,26 +52,18 @@ namespace I_Eat_Spargus.DB
                 db.SaveChanges();
             }
         }
-        public static IOrderedEnumerable<User> AllUsers()
+
+        public static List<User> DisplayingAllUsers()
         {
-            List<User> AllUsers = new List<User>();
             using (Context db = new Context())
             {
-
+                List<User> allUsers = new List<User>();
                 foreach (var user in db.Users)
                 {
-                    AllUsers.Add(user);
+                    allUsers.Add(user);
                 }
-
+                return allUsers;
             }
-            var sortUser = from item in AllUsers
-                           orderby item.Date descending
-                           select item;
-
-            return sortUser;
         }
-       
-
-        
     }
 }

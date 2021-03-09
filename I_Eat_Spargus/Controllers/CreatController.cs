@@ -16,12 +16,12 @@ namespace I_Eat_Spargus.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Registration(string fName,string  lName,string gmail)
+        public IActionResult Registration(string firstName, string  lastname,string gmail)
         {
             User user = new User()
             {
-                FName = fName,
-                LName = lName,
+                FirstName = firstName,
+                LastName = lastname,
                 Gmail = gmail,
                 NumberamountEaten = 0,
                 Date = DateTime.Now
