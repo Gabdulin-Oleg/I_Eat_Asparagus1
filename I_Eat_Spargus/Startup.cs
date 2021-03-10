@@ -33,18 +33,10 @@ namespace I_Eat_Spargus
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                
-                app.UseHsts();
-            }
-            
+                       
             app.UseStaticFiles();
 
-            app.UseRouting();
-
-           
+            app.UseRouting();           
 
             app.UseEndpoints(endpoints =>
             {
