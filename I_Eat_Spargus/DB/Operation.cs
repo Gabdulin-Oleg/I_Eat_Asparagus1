@@ -23,14 +23,11 @@ namespace I_Eat_Spargus.DB
             {
                 if (gmail != null)
                 {
-                    foreach (var user in db.Users)
-                    {
-                        if (user.Gmail == gmail)
-                        {
-                            return user;
-                        }
-                    }
+                    var user = from item in db.Users
+                               where item.Gmail == gmail
+                               select item;
 
+                    return user.FirstOrDefault();
                 }
                 return null;
             }
@@ -57,12 +54,11 @@ namespace I_Eat_Spargus.DB
         {
             using (Context db = new Context())
             {
-                List<User> allUsers = new List<User>();
-                foreach (var user in db.Users)
-                {
-                    allUsers.Add(user);
-                }
-                return allUsers;
+                var alluser = from user in db.Users
+                              orderby user.Date descending
+                              select user;
+
+                return alluser.ToList();
             }
         }
     }

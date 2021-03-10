@@ -13,7 +13,6 @@ namespace I_Eat_Spargus.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> logger;
-       
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -22,12 +21,8 @@ namespace I_Eat_Spargus.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.NewsFeed = from item in Operation.DisplayingAllUsers()
-                               orderby item.Date descending
-                               select item;
+            ViewBag.NewsFeed = Operation.DisplayingAllUsers();
             return View();
         }
-
-        
     }
 }

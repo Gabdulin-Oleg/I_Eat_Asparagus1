@@ -22,7 +22,7 @@
         <button>Да</button>
     </form>
     <label>Лента :</label>
-    @foreach(var user in ViewBag.NewsFeed)
+    @foreach(var user in ViewBag.newsfeed)
     {
         <p>@user.Date @user.FirstName ел спаржу уже @user.NumberamountEaten раз</p><br />
     }
